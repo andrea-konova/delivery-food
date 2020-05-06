@@ -1,8 +1,8 @@
 'use strict';
 
-const cartButton = document.querySelector("#cart-button");
-const modal = document.querySelector(".modal");
-const close = document.querySelector(".close");
+const cartButton = document.querySelector('#cart-button');
+const modal = document.querySelector('.modal');
+const close = document.querySelector('.close');
 const buttonAuth = document.querySelector('.button-auth');
 const modalAuth = document.querySelector('.modal-auth');
 const closeAuth = document.querySelector('.close-auth');
@@ -20,7 +20,7 @@ const cardsMenu = document.querySelector('.cards-menu');
 let login = localStorage.getItem('gloDelivery');
 
 function toggleModal() {
-  modal.classList.toggle("is-open");
+  modal.classList.toggle('is-open');
 }
 
 function toggleModalAuth() {
@@ -160,7 +160,15 @@ cartButton.addEventListener("click", toggleModal);
 
 close.addEventListener("click", toggleModal);
 
-cardsRestaurants.addEventListener('click', openGoods);
+cardsRestaurants.addEventListener('click', function() {
+  if (login) {
+    openGoods(event);
+    // console.log('проблема');
+  } else {
+    toggleModalAuth();
+  }
+  
+})
 
 logo.addEventListener('click', function() {
   containerPromo.classList.remove('hide');
