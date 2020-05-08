@@ -18,7 +18,7 @@ const logo = document.querySelector('.logo');
 const cardsMenu = document.querySelector('.cards-menu');
 const restaurantTitle = document.querySelector('.restaurant-title');
 const rating = document.querySelector('.rating');
-const minprice = document.querySelector('.price');
+const minPrice = document.querySelector('.price');
 const category = document.querySelector('.category');
 
 let login = localStorage.getItem('gloDelivery');
@@ -179,7 +179,7 @@ function openGoods(event) {
 
   if (restaurant) {
     if (login) {
-      const info = restaurant.dataset.info.split('.');
+      const info = restaurant.dataset.info.split(',');
       const [ name, price, stars, kitchen ] = info;
 
       cardsMenu.textContent = '';
@@ -189,7 +189,7 @@ function openGoods(event) {
 
       restaurantTitle.textContent = name;
       rating.textContent = stars;
-      minprice.textContent = `От ${price}  ₽`;
+      minPrice.textContent = `От ${price}  ₽`;
       category.textContent = kitchen;
 
       getData(`./db/${restaurant.dataset.products}`).then(function (data) {
