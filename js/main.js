@@ -123,7 +123,7 @@ function createCardRestaurant({ image, kitchen, name, price, stars, products,
       data-products="${products}"
       data-info="${[name, price, stars, kitchen]}"
       >
-      <img src="${image}" alt="image" class="card-image"/>
+      <img src="${image}" alt="${image}" class="card-image"/>
       <div class="card-text">
         <div class="card-heading">
           <h3 class="card-title">${name}</h3>
@@ -150,7 +150,7 @@ function createCardGood({ name, description, price, image }) {
   card.className = 'card';
 
   card.insertAdjacentHTML('beforeend', `
-      <img src="${image}" alt="image" class="card-image"/>
+      <img src="${image}" alt="${image}" class="card-image"/>
       <div class="card-text">
         <div class="card-heading">
           <h3 class="card-title card-title-reg">${name}</h3>
