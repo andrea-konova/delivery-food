@@ -27,7 +27,18 @@ const cartButton = document.querySelector('#cart-button'),
 
 let login = localStorage.getItem('gloDelivery');
 
-const cart =[];
+const cart = [];
+const loadCart = function() {
+  if (localStorage.getItem(login)) {
+    JSON.parse(localStorage.getItem(login)).forEach(function(item) {
+      cart.push(item);
+    })
+  }
+}
+
+const saveCart = function() {
+  localStorage.setItem(login, JSON.stringify(cart))
+}
 
 const getData = async function(url) {
   
@@ -66,6 +77,7 @@ function autorized() {
 
   function logOut() {
     login = null;
+    cart.length = 0;
     localStorage.removeItem('gloDelivery');
     buttonAuth.style.display = '';
     userName.style.display = '';
@@ -85,6 +97,7 @@ function autorized() {
   buttonOut.style.display = 'flex';
   cartButton.style.display = 'flex';
   buttonOut.addEventListener('click', logOut);
+  loadCart();
 }
 
 function notAutorized() {
@@ -284,6 +297,7 @@ function changeCount(event) {
     if (target.classList.contains('counter-plus')) food.count++;
     renderCart();
   }
+  saveCart();
 }
  
 function init() {
